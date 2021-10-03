@@ -26,4 +26,11 @@ public class AccountService {
         repository.save(account1);
         return AccountResponse.of(account);
     }
+
+    public String deleteAccount(String cpf) {
+        Account account = repository.findByCpf(cpf);
+        account.setActive(false);
+        repository.save(account);
+        return "Conta com cpf "+cpf+" desabilitada";
+    }
 }
